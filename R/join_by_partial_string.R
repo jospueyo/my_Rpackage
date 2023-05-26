@@ -1,32 +1,8 @@
-library(tidyverse)
-
-create_char <- function(x){
-  paste(sample(letters, 3, replace = T), collapse = "")
-}
-
-df <- tibble(
-  text =  c(
-    "ffadgafñlk Josepfgfs sdvkñ dsñvnsfñ fsdñvsnfv Bru",
-    "fdfdg judit dsvsdnv mont dsñgkdsgñj cvfsñkv",
-    "mont dfajsdn ds´vksdj Judit dslkvds",
-    "bru dsvks´m mont sdvf josep dsvksfkl Josep",
-    "fdbdfk bru fdbdfkm"
-  )
-) |> 
-  mutate(id = row_number(), .before = 1)
-
-
-pattern <- tibble(
-  names1 = c("josep", "judit", "mont", "bru"),
-  names2 = c("Josep", "Judit", "Mont", "Bru")
-)
-
-pattern_long <- pattern |> 
-  pivot_longer(everything()) |> 
-  mutate(value_boundary = paste0("\\b", value, "\\b"))
-  
-
-# partial join ----------------------------------------------------------------------------------------------------
+#' Join by partial string
+#' @param x data.frame x
+#' @param y data.frame y
+#' @param by_x column in x to join by (string)
+#' @param pattern_y column in y to look for patterns (string)
 
 partial_join <- function(x, y, by_x, pattern_y) {
   idx_x <- sapply(y[[pattern_y]], grep, x[[by_x]])
@@ -36,8 +12,4 @@ partial_join <- function(x, y, by_x, pattern_y) {
                          y[unlist(idx_y), , drop = F])
   return(df)
 }
-
-
-df |> 
-  partial_join(y = pattern_long, by_x = "text", pattern_y = "value_boundary")
 
