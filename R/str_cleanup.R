@@ -1,4 +1,6 @@
-# Function to move from janitor::clean_names to names nice to plot.
+#' @title Cleanup names
+#' @description
+#' Function to move from janitor::clean_names to names nice to plot.
 
 str_cleanup <- function (string)
 {

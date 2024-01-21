@@ -1,11 +1,10 @@
-Package: jospueyo
+Package: Rjospueyo
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Title: Rjospueyo
+Version: 0.2.0
+Author: Josep Pueyo-Ros
+Maintainer: Josep Pueyo-Ros (jospueyo@gmail.com)
+Description: Wrappers and other invents that I like to have at hand. Unstructured and chaotic package.
+License: MIT license
 Encoding: UTF-8
 LazyData: true
